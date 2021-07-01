@@ -17,17 +17,21 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
 
+
+    //Nutzer erstellen
     @Override
     public User saveUser(User user) {
         user.setTime(new Date());
         return userRepo.save(user);
     }
 
+    //Alle Nutzer ausgeben
     @Override
     public List<User> getUsers() {
         return userRepo.findAll();
     }
 
+    //Bestimmten Nutzer ausgeben
     @Override
     public User getUserById(Long id) throws UserNotFoundException {
         Optional<User> user = userRepo.findById(id);
@@ -35,12 +39,14 @@ public class UserServiceImpl implements UserService {
         return user.get();
     }
 
+    //Bestimmten Nutzer löschen
     @Override
     public String deleteUserById(Long id) {
         userRepo.deleteById(id);
         return "Department successfully deleted!";
     }
 
+    //Bestimmten Nutzer aktualisieren
     @Override
     public User updateUser(Long id, User user) {
         User updatedUser = user;

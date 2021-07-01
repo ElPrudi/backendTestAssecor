@@ -23,6 +23,7 @@ import org.springframework.core.io.Resource;
 @Configuration @EnableBatchProcessing
 public class SpringBatchConfig {
 
+    //Baut den Prozess zum laden der .csv-Datei
     @Bean
     public Job job(JobBuilderFactory jobBuilderFactory,
                    StepBuilderFactory stepBuilderFactory,
@@ -42,6 +43,7 @@ public class SpringBatchConfig {
                 .build();
     }
 
+    //Baut den File Reader
     @Bean
     public FlatFileItemReader<User> itemReader(@Value("${input}") Resource resource) {
         FlatFileItemReader<User> fileItemReader = new FlatFileItemReader<>();
@@ -52,6 +54,7 @@ public class SpringBatchConfig {
         return fileItemReader;
     }
 
+    //Baut den Tokenizer, sodass die Daten eingelesen werden, und den Mapper, um diesen im UserModel zu speichern
     private LineMapper<User> lineMapper() {
         DefaultLineMapper<User> defaultLineMapper = new DefaultLineMapper<>();
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();

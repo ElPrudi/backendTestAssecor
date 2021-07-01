@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
+    //Handler wird benötigt, um die Fehlermeldungen bei der Datenbankverwaltung zu verkürzen und zu vereinfachen
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorMessage> userNotFoundException(UserNotFoundException e, WebRequest req) {
         ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, e.getMessage());

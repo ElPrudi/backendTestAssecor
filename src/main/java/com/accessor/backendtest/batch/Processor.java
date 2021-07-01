@@ -28,6 +28,7 @@ public class Processor implements ItemProcessor<User, User> {
         String colorCode = user.getColor();
         String color = COLOR_NAMES.get(colorCode);
         user.setColor(color);
+        //timestamp
         user.setTime(new Date());
         System.out.printf("Converted from [%s] to [%s]%n", colorCode, color);
         return user;

@@ -19,30 +19,35 @@ public class UserController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
+    //Nutzer erstellen
     @PostMapping("/")
     public User saveUser(@Valid @RequestBody User user) {
         LOGGER.info("Inside saveUser of UserController");
         return userService.saveUser(user);
     }
 
+    //Komplette Nutzerliste ausgeben
     @GetMapping("/")
     public List<User> getUsers() {
         LOGGER.info("Inside getUsers of UserController");
         return userService.getUsers();
     }
 
+    //Bestimmten Nutzer ausgeben
     @GetMapping("/{id}")
     public User getUserById(@PathVariable("id") Long id) throws UserNotFoundException {
         LOGGER.info("Inside getUserById of UserController");
         return userService.getUserById(id);
     }
 
+    //Bestimmten Nutzer löschen
     @DeleteMapping("/{id}")
     public String deleteUserById(@PathVariable("id") Long id) {
         LOGGER.info("Inside deleteUserById of UserController");
         return userService.deleteUserById(id);
     }
 
+    //Bestimmten Nutzer aktualisieren
     @PutMapping("/{id}")
     public User updateUser(@PathVariable("id") Long id, @RequestBody User user) {
         LOGGER.info("Inside updateUser of UserController");

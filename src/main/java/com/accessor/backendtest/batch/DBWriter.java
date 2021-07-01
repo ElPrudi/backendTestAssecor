@@ -14,6 +14,7 @@ public class DBWriter implements ItemWriter<User> {
     @Autowired
     private UserRepo userRepo;
 
+    //Speichert Nutzer in die Datenbank
     @Override
     public void write(List<? extends User> users) throws Exception {
         System.out.println("Data Saved for Users: " + users);
