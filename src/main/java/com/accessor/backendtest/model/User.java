@@ -1,6 +1,7 @@
 package com.accessor.backendtest.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,10 +13,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Entity @Data @NoArgsConstructor @AllArgsConstructor
+@Entity @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @NotBlank(message = "Ein Nachname ist erforderlich")
     @NotNull(message = "Ein Nachname ist erforderlich")
     private String lastName;
